@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#172014">
+<title>Sjravel FM | De echte piratenhits</title>
+<style>
+:root{--green:#26351f;--green2:#172014;--cream:#f4e8c8;--gold:#e5b85d;--rust:#a7432b;--ink:#211b13}
+*{box-sizing:border-box}
+body{margin:0;color:var(--cream);font-family:Georgia,'Times New Roman',serif;background-color:var(--green2);background-image:radial-gradient(ellipse at 50% 0%,#4a5731 0%,#26351f 40%,#11180f 100%);min-height:100vh}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.12;background-image:repeating-linear-gradient(90deg,transparent 0 70px,#b4a074 71px,#171c11 74px,transparent 78px);mix-blend-mode:screen}
+header{position:relative;display:flex;align-items:center;justify-content:space-between;gap:15px;padding:16px clamp(16px,5vw,58px);border-bottom:3px solid #b28c48;background:#10170fe8}
+.wordmark{font-family:Impact,'Arial Narrow',sans-serif;font-size:clamp(20px,3vw,29px);letter-spacing:2px;color:var(--gold);text-shadow:2px 2px 0 #542719}
+.pill{font:700 11px Arial,sans-serif;letter-spacing:2px;border:1px solid #d6b66d8c;padding:9px 12px;border-radius:3px;color:#f5dfaa;white-space:nowrap}
+.pill i{display:inline-block;width:7px;height:7px;border-radius:50%;background:#db382d;margin-right:7px;box-shadow:0 0 8px #f43c2f}
+main{position:relative;width:min(980px,92vw);margin:clamp(24px,5vw,52px) auto 55px;text-align:center}
+.ribbon{display:inline-block;padding:7px 15px;background:var(--rust);color:#fff1d2;font:900 11px Arial,sans-serif;letter-spacing:3px;transform:rotate(-2deg);box-shadow:3px 4px 0 #10150d;margin-bottom:16px}
+.logo{display:block;width:min(340px,78vw);height:auto;margin:0 auto 9px;border:4px solid #e5d5aa;box-shadow:0 0 0 6px #202b19,0 12px 28px #0008;transform:rotate(-1deg)}
+h1{font-family:Impact,'Arial Narrow',sans-serif;font-size:clamp(43px,9vw,86px);line-height:.95;letter-spacing:3px;margin:23px 0 8px;color:#f3d38a;text-shadow:3px 4px 0 #6c2e1e,6px 7px 0 #0c100a}
+.tag{margin:15px 0 28px;color:#e7d8b3;font:bold 13px Arial,sans-serif;letter-spacing:3px;text-transform:uppercase}
+.player{position:relative;max-width:590px;margin:0 auto;padding:25px 22px 22px;background:linear-gradient(145deg,#39482a,#1a2415);border:2px solid #c29b52;box-shadow:0 8px 0 #11170e,0 15px 35px #0007}
+.player:before,.player:after{content:"✦";position:absolute;color:var(--gold);font-size:20px;top:9px}.player:before{left:12px}.player:after{right:12px}
+.kicker{font:bold 11px Arial,sans-serif;letter-spacing:4px;color:#e9c36c;text-transform:uppercase}
+.station{font:clamp(24px,5vw,36px) Impact,'Arial Narrow',sans-serif;letter-spacing:2px;margin:9px 0 6px;color:#fff0c8}
+.subtitle{font:13px Arial,sans-serif;color:#c9c7a7;margin-bottom:21px}
+.controls{display:flex;align-items:center;justify-content:center;gap:13px;flex-wrap:wrap}
+button{font-weight:900;font-size:14px;letter-spacing:1px;cursor:pointer;border:2px solid #f2d38b;color:#251b10;background:linear-gradient(#f5d78e,#c18a3e);padding:14px 23px;box-shadow:3px 4px 0 #10150d;border-radius:2px}
+button:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.vol{display:flex;align-items:center;gap:8px;font:11px Arial,sans-serif;color:#e7d8b3;text-transform:uppercase;letter-spacing:1px}
+input[type=range]{width:100px;accent-color:#e4b65a}
+.status{font:12px Arial,sans-serif;color:#d4c9a7;min-height:16px;margin-top:19px;line-height:1.5}
+footer{position:relative;text-align:center;border-top:1px solid #b18a4d66;padding:20px;color:#b4ae8d;font:11px Arial,sans-serif;letter-spacing:2px}
+@media(max-width:480px){header{padding:14px}.pill{font-size:9px;padding:8px}.player{padding:24px 14px 19px}.tag{letter-spacing:1.5px;font-size:11px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wordmark">★ SJRAVEL FM ★</div>
+  <div class="pill"><i></i>DE PIRATENZENDER</div>
+</header>
+<main>
+  <div class="ribbon">ECHT • LIMBURGS • GEZELLIG</div>
+  <img class="logo" src="logo.png" alt="Sjravel FM logo">
+  <h1>SJRAVEL FM</h1>
+  <p class="tag">De beste piratenhits — recht van het platteland</p>
+  <section class="player" aria-label="Sjravel FM live radio">
+    <div class="kicker">📻 Rechtstreeks uit de studio</div>
+    <div class="station">JIJ LUISTERT NAAR SJRAVEL FM</div>
+    <div class="subtitle">Nederlandstalig • Piratenhits • Non-stop gezelligheid</div>
+    <audio id="radio" preload="none"></audio>
+    <div class="controls">
+      <button id="play" type="button">▶ LUISTER LIVE</button>
+      <label class="vol" for="volume">Volume <input id="volume" type="range" min="0" max="1" step=".01" value=".8"></label>
+    </div>
+    <div id="status" class="status">Druk op ‘Luister live’ om af te stemmen.</div>
+  </section>
+</main>
+<footer>© <span id="year"></span> SJRAVEL FM &nbsp;•&nbsp; VAN DE STREEK, VOOR DE STREEK</footer>
+<script>
+/*
+  PLAK HIER JE PUBLIEKE ICECAST-LUISTERADRES.
+  Voorbeeld: https://radio.jouwdomein.nl/radio.mp3
+  Niet localhost/127.0.0.1: dat werkt alleen op jouw eigen computer.
+*/
+const STREAM_URL = "VUL_HIER_JE_PUBLIEKE_STREAM_URL_IN";
+const audio = document.getElementById("radio");
+const play = document.getElementById("play");
+const status = document.getElementById("status");
+const volume = document.getElementById("volume");
+document.getElementById("year").textContent = new Date().getFullYear();
+audio.volume = Number(volume.value);
+volume.addEventListener("input", () => audio.volume = Number(volume.value));
+play.addEventListener("click", async () => {
+  if (!STREAM_URL || STREAM_URL.includes("VUL_HIER")) {
+    status.textContent = "De radioverbinding moet nog worden ingesteld.";
+    return;
+  }
+  if (!audio.paused) {
+    audio.pause(); play.textContent = "▶ LUISTER LIVE"; status.textContent = "Radio gepauzeerd."; return;
+  }
+  audio.src = STREAM_URL;
+  status.textContent = "Verbinden met de studio…";
+  try { await audio.play(); play.textContent = "Ⅱ PAUZEREN"; status.textContent = "Je luistert live naar Sjravel FM!"; }
+  catch(e) { status.textContent = "Geen verbinding. Controleer of de stream online is en het adres klopt."; }
+});
+audio.addEventListener("playing",()=>{play.textContent="Ⅱ PAUZEREN";status.textContent="Je luistert live naar Sjravel FM!"});
+audio.addEventListener("pause",()=>{if(!audio.ended)play.textContent="▶ LUISTER LIVE"});
+audio.addEventListener("error",()=>{status.textContent="Stream niet bereikbaar. Controleer het publieke streamadres."});
+</script>
+</body>
+</html>

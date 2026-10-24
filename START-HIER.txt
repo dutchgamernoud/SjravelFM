@@ -1,0 +1,22 @@
+SJRAVEL FM — WEBSITE
+
+BESTANDEN
+- index.html: website
+- logo.png: jouw logo
+
+BELANGRIJK: DE PLAYER SPEELT PAS ALS JE PUBLIEKE STREAM-URL IS INGEVULD.
+1. Open index.html in Kladblok.
+2. Zoek naar STREAM_URL.
+3. Vervang "VUL_HIER_JE_PUBLIEKE_STREAM_URL_IN" door je publieke luisteradres,
+   bijvoorbeeld https://radio.jouwdomein.nl/radio.mp3.
+4. Sla op en upload index.html en logo.png samen naar je websitehosting.
+
+localhost en 127.0.0.1 zijn NIET publiek bereikbaar. Die adressen werken alleen op de pc waarop Icecast draait.
+Voor publiek luisteren heb je nodig:
+- een werkende Icecast mountpoint (bijv. /radio.mp3),
+- een streamadres dat vanaf internet bereikbaar is,
+- hosting voor de website.
+Als de website via HTTPS loopt, gebruik dan ook een HTTPS-streamadres; anders blokkeren veel browsers de audio.
+
+Je Icecast-configuratie gebruikte het standaardwachtwoord 'hackme'. Verander dit voordat je de server publiek bereikbaar maakt.
+Controleer ook de muziekrechten voor openbare uitzending.
